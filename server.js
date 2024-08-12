@@ -13,7 +13,7 @@ const mangaList = [
 ];
 
 // Middleware to serve static files from 'public' directory
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve the main HTML file (index.html)
 app.get('/', (req, res) => {
