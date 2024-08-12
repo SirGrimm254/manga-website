@@ -268,3 +268,65 @@ body.chapter-page {
 .hidden {
     display: none;
 }
+
+/*for solo levelling*/
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.manga-details {
+    display: flex;
+    padding: 20px;
+}
+
+.manga-image img {
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+.manga-info h2 {
+    margin-top: 0;
+}
+
+#chapter-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#chapter-list li {
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
