@@ -64,10 +64,10 @@ function setupNavigationButtons(currentChapter, mangaTitle) {
 
     if (currentChapter < totalChapters) {
         nextButton.addEventListener('click', () => {
-            window.location.href = `chapter.html?chapter=${currentChapter + 1}`;
+            window.location.href = `solo-detail.html?chapter=${currentChapter + 1}&id=2`;
         });
         nextButtonBottom.addEventListener('click', () => {
-            window.location.href = `chapter.html?chapter=${currentChapter + 1}`;
+            window.location.href = `solo-detail.html?chapter=${currentChapter + 1}&id=2`;
         });
     } else {
         nextButton.disabled = true;
@@ -76,10 +76,10 @@ function setupNavigationButtons(currentChapter, mangaTitle) {
 
     if (currentChapter > 1) {
         prevButton.addEventListener('click', () => {
-            window.location.href = `chapter.html?chapter=${currentChapter - 1}`;
+            window.location.href = `solo-detail.html?chapter=${currentChapter - 1}&id=2`;
         });
         prevButtonBottom.addEventListener('click', () => {
-            window.location.href = `chapter.html?chapter=${currentChapter - 1}`;
+            window.location.href = `solo-detail.html?chapter=${currentChapter - 1}&id=2`;
         });
     } else {
         prevButton.disabled = true;
