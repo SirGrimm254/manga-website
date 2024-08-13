@@ -161,53 +161,133 @@ footer.hidden {
     }
 }
 
-/* Manga detail section styles */
-#manga-detail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-/* Container for manga image and content */
-#manga-info {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    max-width: 1200px; /* Adjust width as needed */
-    gap: 2em; /* Space between image and content */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
 }
 
-/* Manga image styles */
-#manga-image {
-    max-width: 300px; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px;
+header h1 {
+    margin: 0;
 }
 
-/* Manga content styles */
-#manga-content {
-    max-width: 700px; /* Adjust width as needed */
-    flex: 1;
-}
-
-/* Introduction heading */
-#manga-content h3 {
-    margin-top: 0;
-}
-
-/* Chapter list styles */
-#manga-chapters {
+nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 1em;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
-#manga-chapters li {
-    padding: 0.5em 0;
-    border-bottom: 1px solid #ddd;
+nav ul li {
+    margin: 0 15px;
 }
 
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Manga detail section styles */
+#manga-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#manga-image img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+#manga-info {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+#manga-info h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+#manga-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+#manga-info h3 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 20px;
+}
+
+#manga-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+#manga-info ul li {
+    margin-inline: 10px;
+}
+
+#manga-info ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#manga-info ul li a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .manga-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .manga-image img {
+        max-width: 100%;
+    }
+
+    .manga-info {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
 /* Center the chapter images container */
 #chapter-images {
     display: flex;
@@ -400,26 +480,6 @@ footer {
         margin-left: 0;
         margin-top: 20px;
     }
-}
-.chapter-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-}
-
-.chapter-navigation button {
-    padding: 10px 20px;
-    background-color: #ff6347;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.chapter-navigation button:hover {
-    background-color: #ff4500;
 }
 
 .hidden {
