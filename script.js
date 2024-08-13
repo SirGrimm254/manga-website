@@ -10,22 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    fetch('manga.json')  // Ensure this is the correct path to your JSON file
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        // Handle the data
-    })
-    .catch(error => {
-        console.error('Error fetching manga:', error);
-    });
-
-
     function fetchMangaByCategory(category) {
         fetch(`/api/manga?category=${category}`)
             .then(response => response.json())
