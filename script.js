@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryLinks = document.querySelectorAll('.categories-list a');
     const mangaListContainer = document.getElementById('manga-list');
 
+    // Fetch and display manga by category when a category link is clicked
     categoryLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
@@ -24,37 +25,30 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h3>${manga.title}</h3>
                         <p>Category: ${manga.category}</p>
                     `;
+                    mangaItem.addEventListener('click', () => {
+                        window.location.href = `manga-detail.html?title=${encodeURIComponent(manga.title)}`;
+                    });
                     mangaListContainer.appendChild(mangaItem);
                 });
             })
             .catch(error => console.error('Error fetching manga:', error));
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const mangaItems = document.querySelectorAll('.manga-item');
+    // Footer visibility toggle based on scroll direction
+    let lastScrollTop = 0;
+    const footer = document.querySelector('footer');
 
-    mangaItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const title = item.querySelector('h3').textContent;
-            window.location.href = `manga-detail.html?title=${encodeURIComponent(title)}`;
-        });
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            footer.classList.add('hidden');
+        } else {
+            // Scrolling up
+            footer.classList.remove('hidden');
+        }
+
+        lastScrollTop = scrollTop;
     });
-});
-
-let lastScrollTop = 0;
-const footer = document.querySelector('footer');
-
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down
-        footer.classList.add('hidden');
-    } else {
-        // Scrolling up
-        footer.classList.remove('hidden');
-    }
-    
-    lastScrollTop = scrollTop;
 });
