@@ -5,19 +5,19 @@ const port = 3000;
 
 // Sample manga data
 const mangaList = [
-    { id: 1, title: 'Nano Machine', category: 'Action', imageUrl: '/images/Manga1.jpg' },
-    { id: 2, title: 'Solo Levelling', category: 'Fantasy', imageUrl: '/images/Manga2.jpg' },
-    { id: 3, title: 'Demonic Emperor', category: 'Horror', imageUrl: '/images/Manga3.jpg' },
-    { id: 4, title: "Heavenly Demon Can't Live A Normal Life", category: 'Martial Arts', imageUrl: '/images/Manga4.jpg' },
+    { id: 1, title: 'Nano Machine', category: 'Action', imageUrl: '/images/manga1.jpg' },
+    { id: 2, title: 'Solo Levelling', category: 'Fantasy', imageUrl: '/images/manga2.jpg' },
+    { id: 3, title: 'Demonic Emperor', category: 'Horror', imageUrl: '/images/manga3.jpg' },
+    { id: 4, title: "Heavenly Demon Can't Live A Normal Life", category: 'Martial Arts', imageUrl: '/images/manga4.jpg' },
     // Add more manga data as needed
 ];
 
-// Middleware to serve static files from 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Middleware to serve static files from the root directory (manga-website)
+app.use(express.static(path.join(__dirname)));
 
 // Serve the main HTML file (index.html)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // API route to fetch manga data with optional category filtering
@@ -36,21 +36,4 @@ app.get('/api/manga', (req, res) => {
 // Start the server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
-});
-
-let lastScrollTop = 0;
-const footer = document.querySelector('footer');
-
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down
-        footer.classList.add('hidden');
-    } else {
-        // Scrolling up
-        footer.classList.remove('hidden');
-    }
-    
-    lastScrollTop = scrollTop;
 });

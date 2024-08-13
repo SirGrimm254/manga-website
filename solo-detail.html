@@ -11,32 +11,41 @@
         <h1>Solo Levelling</h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#manga">Manga</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#manga">Manga</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="manga-details">
-            <h2 id="manga-title">Solo Levelling</h2>
-            <img id="manga-image" src="images/manga2.jpg" alt="Manga 2">
-            <h3>INTRODUCTION</h3>
-            <p id="manga-synopsis">
-                Solo Leveling follows the story of Sung Jin-Woo, an E-rank hunter who becomes the world’s strongest S-rank hunter...
-            </p>
-            <h3>Chapters</h3>
-            <ul id="chapter-list">
-                <!-- Chapters will be dynamically loaded here -->
-                <li><a href="soloChapter.html?chapter=0">Chapter 0: Prologue</a></li>
-                <li><a href="soloChapter.html?chapter=1">Chapter 2: The Begining</a></li>
-                <li><a href="soloChapter.html?chapter=2">Chapter 3: The Awakening</a></li>
-            </ul>
+        <section class="manga-details">
+            <div class="manga-image">
+                <img src="images/manga2.jpg" alt="Solo Levelling">
+            </div>
+            <div class="manga-info">
+                <h2 id="chapter-title">Solo Levelling</h2>
+                <h3>INTRODUCTION</h3>
+                <p>Solo Levelling follows the story of the weakest hunter who becomes the strongest after a mysterious system awakens within him.</p>
+                <div class="chapter-list">
+                    <h2>Chapters</h2>
+                    <ul>
+                        <li><a href="prologue.html">Chapter 0: Prologue</a></li>
+                        <li><a href="solo-detail.html?chapter=1">Chapter 1: The Beginning</a></li>
+                        <li><a href="solo-detail.html?chapter=2">Chapter 2: Awakening</a></li>
+                        <!-- Add more chapters as needed -->
+                    </ul>
+                </div>
+                <div id="images-container"></div>
+            </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Manga Dome</p>
+        <p>&copy; 2024 Manga World</p>
+        <button id="prev-chapter">Previous Chapter</button>
+        <button id="next-chapter">Next Chapter</button>
+        <button id="prev-chapter-bottom">Previous Chapter</button>
+        <button id="next-chapter-bottom">Next Chapter</button>
     </footer>
     <script src="solo-detail.js"></script>
 </body>
