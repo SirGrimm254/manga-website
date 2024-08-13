@@ -272,6 +272,9 @@ body.chapter-page {
 /*for solo levelling*/
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 header {
@@ -301,11 +304,16 @@ nav ul li a {
 .manga-details {
     display: flex;
     padding: 20px;
+    align-items: flex-start;
 }
 
 .manga-image img {
     max-width: 300px;
     margin-right: 20px;
+}
+
+.manga-info {
+    max-width: 600px;
 }
 
 .manga-info h2 {

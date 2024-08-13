@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chapterNumber = parseInt(urlParams.get('chapter'), 10) || 1;
     const mangaTitle = 'Solo Levelling';  // Replace this with dynamic manga title if needed
 
-    if (chapterNumber) {
+    if (chapterNumber !== null) {
         loadChapterImages(chapterNumber, mangaTitle);
         setupNavigationButtons(chapterNumber, mangaTitle);
     }
@@ -12,22 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
 function loadChapterImages(chapterNumber, mangaTitle) {
     // Mock data - replace this with actual data from your server or database
     const mangaChapters = {
-        1: [
-            'images/solo-levelling/chapter1/page1.jpg',
-            'images/solo-levelling/chapter1/page2.jpg',
-            'images/solo-levelling/chapter1/page3.jpg',
-            'images/solo-levelling/chapter1/page4.jpg',
-            'images/solo-levelling/chapter1/page5.jpg',
-            'images/solo-levelling/chapter1/page6.jpg',
-            'images/solo-levelling/chapter1/page7.jpg',
-            'images/solo-levelling/chapter1/page8.jpg',
-            'images/solo-levelling/chapter1/page9.jpg',
+        0: [
+            'images/solo-levelling/prologue/page1.jpg',
+            'images/solo-levelling/prologue/page2.jpg',
+            'images/solo-levelling/prologue/page3.jpg',
+            'images/solo-levelling/prologue/page4.jpg',
+            'images/solo-levelling/prologue/page5.jpg',
+            'images/solo-levelling/prologue/page6.jpg',
+            'images/solo-levelling/prologue/page7.jpg',
+            'images/solo-levelling/prologue/page8.jpg',
+            'images/solo-levelling/prologue/page9.jpg',
         ],
-        2: [
+        1: [
             'images/solo-levelling/chapter2/page1.jpg',
             // Add more images for chapter 2
         ],
-        3: [
+        2: [
             'images/solo-levelling/chapter3/page1.jpg',
         ],
         // Add more chapters as needed
