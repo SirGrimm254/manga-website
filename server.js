@@ -19,7 +19,7 @@ const mangaList = [
 app.use(express.static(path.join(__dirname)));
 
 // Serve the main HTML file (index.html)
-app.get('/', (req, res) => {
+app.get('/api/manga', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
