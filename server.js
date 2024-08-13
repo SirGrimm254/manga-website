@@ -19,7 +19,7 @@ const mangaList = [
 app.use(express.static(path.join(__dirname)));
 
 // API route to fetch manga data with optional category filtering
-app.get('/', (req, res) => {
+app.get('/api/manga', (req, res) => {
     const { category } = req.query;
     if (category) {
         // Filter manga by category

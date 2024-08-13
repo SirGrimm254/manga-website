@@ -1,3 +1,4 @@
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const categoryLinks = document.querySelectorAll('.categories-list a');
     const mangaListContainer = document.getElementById('manga-list');
@@ -11,34 +12,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Define the fetchMangaByCategory function
     function fetchMangaByCategory(category) {
-      const apiUrl = 'https://example.com/api/manga';
-      fetch(`${apiUrl}?category=${category}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-            .then(mangaList => {
-                console.log(mangaList);
-                mangaListContainer.innerHTML = ''; // Clear previous results
-                mangaList.forEach(manga => {
-                    const mangaItem = document.createElement('div');
-                    mangaItem.classList.add('manga-item');
-                    mangaItem.innerHTML = `
+        fetch(`/api/manga?category=${category}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update the manga list container with the fetched data
+                mangaListContainer.innerHTML = '';
+                data.forEach(manga => {
+                    const mangaElement = document.createElement('div');
+                    mangaElement.innerHTML = `
+                        <h2>${manga.title}</h2>
                         <img src="${manga.imageUrl}" alt="${manga.title}">
-                        <h3>${manga.title}</h3>
-                        <p>Category: ${manga.category}</p>
                     `;
-                    mangaItem.addEventListener('click', () => {
-                        window.location.href = `manga-detail.html?title=${encodeURIComponent(manga.title)}`;
-                    });
-                    mangaListContainer.appendChild(mangaItem);
+                    mangaListContainer.appendChild(mangaElement);
                 });
             })
-            .catch(error => console.error('Error fetching manga:', error));
+            .catch(error => console.error(error));
     }
+});
 
     // Footer visibility toggle based on scroll direction
     let lastScrollTop = 0;

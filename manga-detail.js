@@ -1,3 +1,26 @@
+// manga-detail.js
+document.addEventListener('DOMContentLoaded', () => {
+    const mangaId = new URLSearchParams(window.location.search).get('id');
+    if (mangaId) {
+        fetch(`/api/manga/${mangaId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update the HTML with the fetched data
+                const mangaTitleElement = document.getElementById('manga-title');
+                mangaTitleElement.textContent = data.title;
+
+                const mangaImageElement = document.querySelector('.manga-image img');
+                mangaImageElement.src = data.imageUrl;
+
+                const mangaSynopsisElement = document.getElementById('manga-synopsis');
+                mangaSynopsisElement.textContent = data.synopsis;
+
+                const mangaChaptersElement = document.getElementById('manga-chapters');
+                mangaChaptersElement.innerHTML = data.chapters.map(chapter => `<li><a href="chapter.html?chapter=${chapter.id}">${chapter.title}</a></li>`).join('');
+            })
+            .catch(error => console.error(error));
+    }
+});
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const chapterNumber = parseInt(urlParams.get('chapter'), 10) || 1;
