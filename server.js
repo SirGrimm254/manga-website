@@ -18,13 +18,8 @@ const mangaList = [
 // Middleware to serve static files from the root directory (manga-website)
 app.use(express.static(path.join(__dirname)));
 
-// Serve the main HTML file (index.html)
-app.get('/api/manga', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 // API route to fetch manga data with optional category filtering
-app.get('/api/manga', (req, res) => {
+app.get('/', (req, res) => {
     const { category } = req.query;
     if (category) {
         // Filter manga by category
@@ -34,6 +29,11 @@ app.get('/api/manga', (req, res) => {
         // Return all manga if no category is specified
         res.json(mangaList);
     }
+});
+
+// Serve the main HTML file (index.html)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start the server

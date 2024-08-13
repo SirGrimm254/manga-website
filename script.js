@@ -12,13 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function fetchMangaByCategory(category) {
-        fetch(`/api/manga?category=${category}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
+      const apiUrl = 'https://example.com/api/manga';
+      fetch(`${apiUrl}?category=${category}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
             .then(mangaList => {
                 console.log(mangaList);
                 mangaListContainer.innerHTML = ''; // Clear previous results
