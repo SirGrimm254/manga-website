@@ -12,17 +12,20 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#manga">Manga</a></li>
+                <li><a href="#categories">Manga</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <!-- Home Section -->
         <section id="home">
             <h2>Welcome to Manga Dome</h2>
             <p>Your one-stop destination for all manga series.</p>
         </section>
+
+        <!-- Manga Section -->
         <section id="manga">
             <h2>Popular Manga</h2>
             <div class="manga-list">
@@ -39,27 +42,42 @@
                     </a>
                 </div>
                 <div class="manga-item">
-                    <a href="emperor-detail.html?id=3">
+                    <a href="manga-detail.html?id=3">
                         <img src="images/manga3.jpg" alt="Magic Emperor">
                         <h3>Demonic Emperor</h3>
                     </a>
                 </div>
+                <div class="manga-item">
+                    <a href="manga-detail.html?id=7">
+                        <img src="/images/manga4.jpg" alt="Heavenly Demon Can't Live A Normal Life">
+                        <h3>HEAVENLY DEMON<br>CANT LIVE A NORMAL LIFE</h3>
+                    </a>
+                </div>
             </div>
 
-            <h2>Categories</h2>
-            <ul class="categories-list">
-                <li><a href="#" data-category="Action">Action</a></li>
-                <li><a href="#" data-category="Fantasy">Fantasy</a></li>
-                <li><a href="#" data-category="Horror">Horror</a></li>
-                <li><a href="#" data-category="Martial Arts">Martial Arts</a></li>
-            </ul>
+            <!-- Categories Section -->
+            <section id="categories">
+                <h2>Categories</h2>
+                <ul class="categories-list">
+                    <li><a href="#" data-category="Action">Action</a></li>
+                    <li><a href="#" data-category="Fantasy">Fantasy</a></li>
+                    <li><a href="#" data-category="Horror">Horror</a></li>
+                    <li><a href="#" data-category="Martial Arts">Martial Arts</a></li>
+                </ul>
+            </section>
+            <h3>Action Manga</h3>
+            
+            <section id="manga-list" class="manga-list">
+                <!-- Manga items will be dynamically added here -->
+            </section>            
 
-            <div id="manga-list"></div>
-        </section>
+        <!-- About Section -->
         <section id="about">
             <h2>About Us</h2>
             <p>Learn more about Manga Dome and our mission to bring you the best manga series.</p>
         </section>
+
+        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Us</h2>
             <form>
