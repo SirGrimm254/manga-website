@@ -32,21 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-    // Footer visibility toggle based on scroll direction
-    let lastScrollTop = 0;
-    const footer = document.querySelector('footer');
+// Footer visibility toggle based on scroll direction
+let lastScrollTop = 0;
+const footer = document.querySelector('footer');
 
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down
-            footer.classList.add('hidden');
-        } else {
-            // Scrolling up
-            footer.classList.remove('hidden');
-        }
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        footer.classList.add('hidden');
+    } else {
+        // Scrolling up
+        footer.classList.remove('hidden');
+    }
 
-        lastScrollTop = scrollTop;
-    });
+    lastScrollTop = scrollTop;
 });
