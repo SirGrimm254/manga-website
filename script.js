@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to fetch manga by category
 function fetchMangaByCategory(category) {
-  const url = `/api/manga?category=${encodeURIComponent(category)}`;
+  // Use the updated API URL
+  const url = `https://manga-website-p71mxtf00-sirgrimm254s-projects.vercel.app/api/manga?category=${encodeURIComponent(category)}`;
   console.log(`Fetching data from: ${url}`); // Debug log to check the URL
 
   fetch(url)
@@ -27,14 +28,16 @@ function fetchMangaByCategory(category) {
           const mangaList = document.getElementById('manga-list');
           mangaList.innerHTML = '';
 
-          if (!Array.isArray(data) || data.length === 0) {
+          // Adjust based on the response format of the Vercel API
+          // Example: Assuming response is an object with a "results" property
+          if (!data.results || !Array.isArray(data.results) || data.results.length === 0) {
               mangaList.innerHTML = `<p>No manga found for the category "${category}".</p>`;
               return;
           }
 
           const ul = document.createElement('ul');
 
-          data.forEach(manga => {
+          data.results.forEach(manga => {
               const li = document.createElement('li');
               li.innerHTML = `
                   <img src="${manga.imageUrl}" alt="${manga.title}" class="manga-icon">
