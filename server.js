@@ -3,7 +3,6 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-
 // Sample manga data
 const mangaList = [
   { id: 1, title: 'Nano Machine', category: 'Action', imageUrl: '/images/manga1.jpg', detailPage: '/manga-detail.html?id=1' },
@@ -16,20 +15,13 @@ const mangaList = [
   // Add more manga data as needed
 ];
 
-// Middleware to serve static files from the root directory (manga-website)
-app.use(express.static(path.join(__dirname)));
+// Middleware to serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware to set Access-Control-Allow-Origin header
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   next();
-// });
-
-// API route to fetch manga data with optional category filtering
+// API route to fetch manga data by ID
 app.get('/api/manga/:id', (req, res) => {
-  const mangaId = req.params.id;
-  const manga = mangaList.find(manga => manga.id === parseInt(mangaId));
+  const mangaId = parseInt(req.params.id, 10);
+  const manga = mangaList.find(manga => manga.id === mangaId);
   if (manga) {
     res.json(manga);
   } else {
@@ -37,7 +29,7 @@ app.get('/api/manga/:id', (req, res) => {
   }
 });
 
-// API route to fetch all manga or filter by category
+// API route to fetch manga data with optional category filtering
 app.get('/api/manga', (req, res) => {
   const category = req.query.category;
   let filteredManga = mangaList;
