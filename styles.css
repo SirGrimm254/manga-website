@@ -513,6 +513,67 @@ footer {
     cursor: not-allowed;
 }
 
+.manga-title {
+    color: blue;
+    text-decoration: none;
+    font-weight: normal;
+}
+  
+.manga-title:hover {
+    text-decoration: underline;
+}
+
+.manga-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+#manga-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+#manga-list li {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#manga-list div:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#manga-list div:hover img {
+    opacity: 0.8;
+}
+
+#manga-list div:hover h2 {
+    color: #ff4500;
+}
+
+#manga-list li {
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#manga-list li img {
+    width: 5%;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#manga-list li h2 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;

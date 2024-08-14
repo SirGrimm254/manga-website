@@ -19,16 +19,15 @@ const mangaList = [
 app.use(express.static(path.join(__dirname)));
 
 // API route to fetch manga data with optional category filtering
-app.get('/api/manga', (req, res) => {
-    const { category } = req.query;
-    if (category) {
-        // Filter manga by category
-        const filteredManga = mangaList.filter(manga => manga.category.toLowerCase() === category.toLowerCase());
-        res.json(filteredManga);
-    } else {
-        // Return all manga if no category is specified
-        res.json(mangaList);
-    }
+// server.js
+app.get('/api/manga/:id', (req, res) => {
+  const mangaId = req.params.id;
+  const manga = mangaList.find(manga => manga.id === parseInt(mangaId));
+  if (manga) {
+    res.json(manga);
+  } else {
+    res.status(404).json({ error: 'Manga not found' });
+  }
 });
 
 // Serve the main HTML file (index.html)

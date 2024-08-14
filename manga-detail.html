@@ -36,6 +36,21 @@
                     <li><a href="chapter.html?chapter=3">Chapter 3: The Challenge</a></li>
                 </ul>            
             </div>
+            <script>
+                const urlParams = new URLSearchParams(window.location.search);
+                const mangaId = urlParams.get('id');
+            
+                fetch(`/api/manga/${mangaId}`)
+                  .then(response => response.json())
+                  .then(data => {
+                    // Display the manga data here
+                    console.log(data);
+                    document.getElementById('manga-title').innerHTML = data.title;
+                    document.getElementById('manga-image').src = data.imageUrl;
+                    document.getElementById('manga-description').innerHTML = data.description;
+                  })
+                  .catch(error => console.error('Error:', error));
+              </script>
             </div>
         </section>
     </main>    

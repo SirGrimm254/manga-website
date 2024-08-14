@@ -1,51 +1,56 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-    const categoryLinks = document.querySelectorAll('.categories-list a');
-    const mangaListContainer = document.getElementById('manga-list');
-
-    // Fetch and display manga by category when a category link is clicked
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const category = link.getAttribute('data-category');
-            fetchMangaByCategory(category);
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('[data-category="Action"]').addEventListener('click', function(event) {
+      event.preventDefault();
+      const category = 'Action';
+      fetchMangaByCategory(category);
     });
-
-    // Define the fetchMangaByCategory function
-    function fetchMangaByCategory(category) {
-        fetch(`/api/manga?category=${category}`)
-            .then(response => response.json())
-            .then(data => {
-                // Update the manga list container with the fetched data
-                mangaListContainer.innerHTML = '';
-                data.forEach(manga => {
-                    const mangaElement = document.createElement('div');
-                    mangaElement.innerHTML = `
-                        <h2>${manga.title}</h2>
-                        <img src="${manga.imageUrl}" alt="${manga.title}">
-                    `;
-                    mangaListContainer.appendChild(mangaElement);
+  });
+  
+  function fetchMangaByCategory(category) {
+    fetch(`/api/manga?category=${category}`)
+      .then(response => response.json())
+      .then(data => {
+        const mangaList = document.getElementById('manga-list');
+        mangaList.innerHTML = '';
+        const ul = document.createElement('ul');
+  
+        data.forEach((manga) => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <img src="${manga.imageUrl}" alt="${manga.title}" class="manga-icon">
+            <a href="manga-detail.html?id=${manga.id}" class="manga-title">${manga.title}</a>
+            <ul></ul>
+          `;
+          ul.appendChild(li);
+  
+          if (manga.subManga) {
+            const subUl = li.querySelector('ul');
+            manga.subManga.forEach((subManga) => {
+              const subLi = document.createElement('li');
+              subLi.innerHTML = `
+                <img src="${subManga.image}" alt="${subManga.title}" class="manga-icon">
+                <a href="${subManga.detailPage}" class="manga-title">${subManga.title}</a>
+                <ul></ul>
+              `;
+              subUl.appendChild(subLi);
+  
+              if (subManga.subManga) {
+                const subSubUl = subLi.querySelector('ul');
+                subManga.subManga.forEach((subSubManga) => {
+                  const subSubLi = document.createElement('li');
+                  subSubLi.innerHTML = `
+                    <img src="${subSubManga.image}" alt="${subSubManga.title}" class="manga-icon">
+                    <a href="${subSubManga.detailPage}" class="manga-title">${subSubManga.title}</a>
+                  `;
+                  subSubUl.appendChild(subSubLi);
                 });
-            })
-            .catch(error => console.error(error));
-    }
-});
-
-// Footer visibility toggle based on scroll direction
-let lastScrollTop = 0;
-const footer = document.querySelector('footer');
-
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down
-        footer.classList.add('hidden');
-    } else {
-        // Scrolling up
-        footer.classList.remove('hidden');
-    }
-
-    lastScrollTop = scrollTop;
-});
+              }
+            });
+          }
+        });
+  
+        mangaList.appendChild(ul);
+      })
+      .catch(error => console.error('Error:', error));
+  }
+  
