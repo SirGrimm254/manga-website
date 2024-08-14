@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const category = this.getAttribute('data-category');
             fetchMangaByCategory(category);
+            
         });
     });
 });
