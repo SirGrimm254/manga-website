@@ -11,10 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to fetch manga by category
 function fetchMangaByCategory(category) {
-  fetch(`/api/manga?category=${category}`)
+  // Construct the URL for the API request
+  const url = `/api/manga?category=${encodeURIComponent(category)}`;
+
+  fetch(url)
       .then(response => {
-          // Check if the response is successful
           if (!response.ok) {
+              // Handle 404 and other HTTP errors
               throw new Error(`Network response was not ok. Status: ${response.status}`);
           }
           return response.json();
@@ -23,7 +26,6 @@ function fetchMangaByCategory(category) {
           const mangaList = document.getElementById('manga-list');
           mangaList.innerHTML = '';
 
-          // Handle empty data
           if (!Array.isArray(data) || data.length === 0) {
               mangaList.innerHTML = `<p>No manga found for the category "${category}".</p>`;
               return;
@@ -40,7 +42,6 @@ function fetchMangaByCategory(category) {
               `;
               ul.appendChild(li);
 
-              // Generate sub-manga list
               if (Array.isArray(manga.subManga)) {
                   const subUl = li.querySelector('ul');
                   manga.subManga.forEach(subManga => {
@@ -52,7 +53,6 @@ function fetchMangaByCategory(category) {
                       `;
                       subUl.appendChild(subLi);
 
-                      // Generate sub-sub-manga list
                       if (Array.isArray(subManga.subManga)) {
                           const subSubUl = subLi.querySelector('ul');
                           subManga.subManga.forEach(subSubManga => {
