@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manga Dome</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -12,7 +12,8 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#categories">Manga</a></li>
+                <li><a href="#manga">Manga</a></li>
+                <li><a href="#categories">Categories</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -23,6 +24,16 @@
         <section id="home">
             <h2>Welcome to Manga Dome</h2>
             <p>Your one-stop destination for all manga series.</p>
+            
+            <!-- Banner Section -->
+            <div class="banner=container">
+                <div class="banner">
+                    <img src="images/manga1.jpg" alt="Manga 1">
+                    <img src="images/manga2.jpg" alt="Manga 2">
+                    <img src="images/manga3.jpg" alt="Manga 3">
+                    <img src="images/manga4.jpg" alt="Manga 4">
+                </div>
+            </div>
         </section>
 
         <!-- Manga Section -->
@@ -31,43 +42,46 @@
             <div class="manga-list">
                 <div class="manga-item">
                     <a href="manga-detail.html?id=1">
-                        <img src="/images/manga1.jpg" alt="Nano Machine">
+                        <img src="images/manga1.jpg" alt="Nano Machine">
                         <h3>Nano Machine</h3>
                     </a>
                 </div>
                 <div class="manga-item">
-                    <a href="solo-detail.html?id=2">
-                        <img src="/images/manga2.jpg" alt="Solo Levelling">
-                        <h3>Solo Levelling</h3>
+                    <a href="manga-detail.html?id=2">
+                        <img src="images/manga2.jpg" alt="Solo Leveling">
+                        <h3>Solo Leveling</h3>
                     </a>
                 </div>
                 <div class="manga-item">
-                    <a href="emperor-detail.html?id=3">
-                        <img src="/images/manga3.jpg" alt="Magic Emperor">
+                    <a href="manga-detail.html?id=3">
+                        <img src="images/manga3.jpg" alt="Demonic Emperor">
                         <h3>Demonic Emperor</h3>
                     </a>
                 </div>
                 <div class="manga-item">
-                    <a href="live-detail.html?id=4">
-                        <img src="/images/manga4.jpg" alt="Heavenly Demon Can't Live A Normal Life">
+                    <a href="manga-detail.html?id=4">
+                        <img src="images/manga4.jpg" alt="Heavenly Demon Can't Live A Normal Life">
                         <h3>Heavenly Demon<br>Can't Live A Normal Life</h3>
                     </a>
                 </div>
             </div>
+        </section>
 
-            <!-- Categories Section -->
-            <section id="categories">
-                <h2>Categories</h2>
-                <ul class="categories-list">
-                    <li><a href="#" data-category="Action">Action</a></li>
-                    <li><a href="#" data-category="Fantasy">Fantasy</a></li>
-                    <li><a href="#" data-category="Horror">Horror</a></li>
-                    <li><a href="#" data-category="Martial Arts">Martial Arts</a></li>
-                </ul>
-            </section>
-            
+        <!-- Categories Section -->
+        <section id="categories">
+            <h2>Categories</h2>
+            <ul class="categories-list">
+                <li><a href="#" id="action" data-category="Action">Action</a></li>
+                <li><a href="#" id="fantasy" data-category="Fantasy">Fantasy</a></li>
+                <li><a href="#" id="horror" data-category="Horror">Horror</a></li>
+                <li><a href="#" id="martial-arts" data-category="Martial Arts">Martial Arts</a></li>
+            </ul>
+        </section>
+
+        <!-- Manga List Section -->
+        <section id="manga-list">
             <h3>Action Manga</h3>
-            <div id="manga-list">
+            <div id="manga-list-content">
                 <!-- Manga list will be generated here -->
             </div>
         </section>
@@ -95,6 +109,6 @@
     <footer>
         <p>&copy; 2024 Manga Dome</p>
     </footer>
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

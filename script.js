@@ -39,34 +39,8 @@ function fetchMangaByCategory(category) {
               li.innerHTML = `
                   <img src="${manga.imageUrl}" alt="${manga.title}" class="manga-icon">
                   <a href="${manga.detailPage}" class="manga-title">${manga.title}</a>
-                  <ul></ul>
               `;
               ul.appendChild(li);
-
-              if (Array.isArray(manga.subManga)) {
-                  const subUl = li.querySelector('ul');
-                  manga.subManga.forEach(subManga => {
-                      const subLi = document.createElement('li');
-                      subLi.innerHTML = `
-                          <img src="${subManga.imageUrl}" alt="${subManga.title}" class="manga-icon">
-                          <a href="${subManga.detailPage}" class="manga-title">${subManga.title}</a>
-                          <ul></ul>
-                      `;
-                      subUl.appendChild(subLi);
-
-                      if (Array.isArray(subManga.subManga)) {
-                          const subSubUl = subLi.querySelector('ul');
-                          subManga.subManga.forEach(subSubManga => {
-                              const subSubLi = document.createElement('li');
-                              subSubLi.innerHTML = `
-                                  <img src="${subSubManga.imageUrl}" alt="${subSubManga.title}" class="manga-icon">
-                                  <a href="${subSubManga.detailPage}" class="manga-title">${subSubManga.title}</a>
-                              `;
-                              subSubUl.appendChild(subSubLi);
-                          });
-                      }
-                  });
-              }
           });
 
           mangaList.appendChild(ul);

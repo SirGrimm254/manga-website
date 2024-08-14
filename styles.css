@@ -1,9 +1,11 @@
-/* General Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-image: url('images/background.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensures the image covers the entire page */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
     color: #333;
 }
 
@@ -45,11 +47,10 @@ nav ul li a:hover {
     color: #ffd700;
 }
 
-/* Main Content */
 main {
     padding: 2em;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background to enhance readability */
+    border-radius: 10px; /* Optional: Rounded corners */
 }
 
 main h2 {
@@ -58,7 +59,40 @@ main h2 {
     font-size: 2em;
 }
 
-/* Manga List */
+/* Container for banner images */
+.banner-container {
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+    white-space: nowrap; /* Prevent images from wrapping */
+    padding: 10px 0; /* Optional: Padding around the banner */
+    position: relative; /* Needed for positioning the animated element */
+    width: 100%; /* Full width of the container */
+}
+
+/* Banner images */
+.banner {
+    display: inline-flex; /* Align images horizontally */
+    animation: scrollBanner 20s linear infinite; /* Animation for scrolling */
+}
+
+/* Keyframes for scrolling animation */
+@keyframes scrollBanner {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* Move left by 100% of the container width */
+    }
+}
+
+.banner img {
+    width: 1000px; /* Fixed width for images */
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio */
+    margin: 0 5px; /* Space between images */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for depth */
+}
+
 .manga-list {
     display: flex;
     justify-content: space-around;
@@ -76,6 +110,11 @@ main h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.manga-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 .manga-item img {
     width: 150px;
     height: 200px;
@@ -83,26 +122,15 @@ main h2 {
     transition: transform 0.3s ease;
 }
 
-.manga-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
 .manga-item img:hover {
     transform: scale(1.1);
 }
 
-.manga-item h3 {
-    font-size: 1.2em;
-    line-height: 1.4;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    white-space: pre-line;
-    overflow-wrap: break-word;
+./* Categories Section Styles */
+#categories {
+    padding: 20px;
 }
 
-/* Categories List */
 .categories-list {
     list-style-type: disc;
     padding-left: 20px;
@@ -122,7 +150,34 @@ main h2 {
     text-decoration: underline;
 }
 
-/* Footer */
+/* Manga List Styles */
+#manga-list ul {
+    list-style-type: disc;
+    padding-left: 20px; /* Add padding to create space for bullet points */
+}
+
+#manga-list li {
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+#manga-list li img {
+    width: 100px;
+    height: 130px;
+    object-fit: contain;
+    border-radius: 10px;
+    vertical-align: middle; /* Align the image vertically in the middle */
+}
+
+#manga-list li h2 {
+    font-size: 18px;
+    display: inline-block; /* Keep the text on the same line as the image */
+    vertical-align: middle; /* Align the text vertically in the middle */
+    margin: 0 10px; /* Add space between the image and the text */
+}
+
 footer {
     background: linear-gradient(45deg, #ff6347, #ff4500);
     color: #fff;
@@ -140,7 +195,249 @@ footer.hidden {
     transform: translateY(100%);
 }
 
-/* Manga Details */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Container for the entire manga detail section */
+#manga-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    background-color: #f9f9f9; /* Light background for better readability */
+}
+
+/* Container for manga image and content */
+#manga-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 900px;
+    gap: 1em; /* Reduced space between image and content */
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+#manga-info h1 {
+    margin-bottom: 0.1em; /* Adjust to reduce space below the title */
+    text-align: center; /* Center the title horizontally */
+    width: 100%; /* Ensure the title takes up the full width of its container */
+}
+
+/* Introduction heading styling */
+#manga-info h2 {
+    margin-bottom: 0.1em; /* Adjust to reduce space below the 'INTRODUCTION' heading */
+    margin-top: 0; /* Remove any space above the 'INTRODUCTION' heading */
+}
+
+/* Introduction paragraph styling */
+#manga-info p {
+    margin-top: 0; /* Remove space above the introduction paragraph */
+    margin-bottom: 0.1em; /* Adjust to reduce space below the introduction */
+}
+
+/* Chapters list styling */
+#manga-info ul {
+    margin-top: 0.5em; /* Adjust to reduce space above the chapters list */
+}
+
+/* Manga image styles */
+#manga-image {
+    max-width: 300px;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow around the image */
+}
+
+/* Manga item container styles (make sure this class is used in your HTML) */
+.manga-item {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1em;
+    text-align: center;
+    margin: 1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Added to make sure child elements align correctly */
+}
+
+/* Hover effect for the entire manga item */
+.manga-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Manga image styles within the item */
+.manga-item img {
+    width: 150px;
+    height: 200px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ensure transition on both properties */
+}
+
+/* Hover effect for the manga image */
+.manga-item img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Optional: add a shadow on hover */
+}
+
+/* Content styles (e.g., title, description) */
+#manga-content {
+    flex-grow: 1; /* Allow content to expand and fill available space */
+    text-align: left; /* Ensure text is left-aligned */
+    font-family: 'Arial', sans-serif; /* Use a clean, readable font */
+    line-height: 1.6; /* Improve readability with better line spacing */
+}
+
+/* Title of the manga */
+#manga-content h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: #333333; /* Darker color for the title */
+}
+
+/* Description and other details */
+#manga-content p {
+    margin-bottom: 1em;
+    color: #666666; /* Softer color for the text */
+}
+
+/* Chapter list styles */
+#manga-chapters {
+    list-style: none;
+    padding: 0;
+    margin-top: 1em;
+}
+
+#manga-chapters li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Center the chapter images container */
+#chapter-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; /* Adjust based on your needs */
+    padding: 1em;
+}
+
+/* Manga chapter page styles */
+body.chapter-page {
+    background-image: url('images/background-chapter.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensure the image covers the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: repeat; /* Prevent the image from repeating */
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff; /* Ensure text is visible against background */
+}
+
+/* Ensure images are centered within the container */
+#images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between images */
+}
+
+#images-container img {
+    max-width: 100%; /* Responsive width */
+    height: auto;    /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below each image */
+}
+
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.chapter-navigation button {
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.chapter-navigation button:hover {
+    background-color: #ff4500;
+}
+
+.hidden {
+    display: none;
+}
+
+/*for solo levelling*/
+/* General Styles */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Manga Details Section */
 .manga-details {
     display: flex;
     justify-content: space-between;
@@ -152,15 +449,19 @@ footer.hidden {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.manga-image img {
+/* Manga image styles */
+.manga-details .manga-image img {
     max-width: 300px;
     height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow initially */
 }
 
-.manga-image img:hover {
-    transform: scale(1.1);
+/* Hover effect for manga image in manga-details */
+.manga-details .manga-image img:hover {
+    transform: scale(1.1); /* Slightly zoom in */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
 .manga-info {
@@ -203,24 +504,19 @@ footer.hidden {
     text-decoration: underline;
 }
 
-/* Chapter Navigation */
-.chapter-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-}
-
-.chapter-navigation a {
-    padding: 10px 20px;
-    background-color: #ff6347;
+/* Footer Styles */
+footer {
+    background-color: #333;
     color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
 
-.chapter-navigation a:disabled {
-    background-color: #ff4500;
-    cursor: not-allowed;
+.hidden {
+    display: none;
 }
 
 /* Responsive Design */
@@ -239,38 +535,27 @@ footer.hidden {
         margin-top: 20px;
     }
 }
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
 
-/* Miscellaneous */
+.chapter-navigation button {
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.chapter-navigation button:hover {
+    background-color: #ff4500;
+}
+
 .hidden {
     display: none;
-}
-
-body.chapter-page {
-    background-image: url('images/background-chapter.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #fff;
-}
-
-#chapter-images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    padding: 1em;
-}
-
-#images-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-#images-container img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
 }
