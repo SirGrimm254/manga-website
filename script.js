@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Add event listener to Action category link
-  document.querySelector('[data-category="Action"]').addEventListener('click', function(event) {
-    event.preventDefault();
-    const category = 'Action';
-    fetchMangaByCategory(category);
-  });
+    // Add event listeners for category buttons
+    document.querySelectorAll('.categories-list a').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const category = this.getAttribute('data-category');
+            fetchMangaByCategory(category);
+        });
+    });
 });
 
 // Function to fetch manga by category
@@ -14,6 +16,10 @@ function fetchMangaByCategory(category) {
     .then(data => {
       const mangaList = document.getElementById('manga-list');
       mangaList.innerHTML = '';
+      if (data.length === 0) {
+        mangaList.innerHTML = `<p>No manga found for the category "${category}".</p>`;
+        return;
+    }
       const ul = document.createElement('ul');
 
       data.forEach((manga) => {
