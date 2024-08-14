@@ -18,7 +18,7 @@ const mangaList = [
 // Middleware to serve static files from the root directory (manga-website)
 app.use(express.static(path.join(__dirname)));
 
-// API route to fetch manga data by ID
+// API route to fetch manga data with optional category filtering
 app.get('/api/manga/:id', (req, res) => {
   const mangaId = req.params.id;
   const manga = mangaList.find(manga => manga.id === parseInt(mangaId));
