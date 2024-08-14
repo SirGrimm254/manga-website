@@ -118,7 +118,7 @@ main h2 {
 .manga-item img {
     width: 150px;
     height: 200px;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
@@ -126,7 +126,7 @@ main h2 {
     transform: scale(1.1);
 }
 
-./* Categories Section Styles */
+/* Categories Section Styles */
 #categories {
     padding: 20px;
 }
@@ -264,7 +264,7 @@ footer.hidden {
 #manga-image {
     max-width: 300px;
     height: auto; /* Maintain aspect ratio */
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow around the image */
 }
 
@@ -456,6 +456,7 @@ nav ul li a:hover {
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow initially */
+    margin-bottom: 10px;
 }
 
 /* Hover effect for manga image in manga-details */
