@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const chapterNumber = parseInt(urlParams.get('chapter'), 10) || 1;
-    const mangaTitle = "Heavenly Demon Can't Live A Normal Life";  // Replace this with dynamic manga title if needed
+    const mangaTitle = "Heavenly Demon Can't Live A Normal Life" ;  // Replace this with dynamic manga title if needed
 
     if (chapterNumber) {
         loadChapterImages(chapterNumber, mangaTitle);
