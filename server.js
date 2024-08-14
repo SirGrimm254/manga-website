@@ -29,6 +29,12 @@ app.get('/api/manga/:id', (req, res) => {
     }
 });
 
+app.get('/api/manga/:id', (req, res) => {
+    const mangaId = req.params.id;
+    // Logic to fetch manga by ID
+    res.json({ id: mangaId, title: "Sample Manga" });
+});
+
 // API route to fetch all manga or filter by category
 app.get('/api/manga', (req, res) => {
     const category = req.query.category;

@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
   function fetchMangaByCategory(category) {
     const url = `/api/manga?category=${encodeURIComponent(category)}`;
     console.log(`Fetching data from: ${url}`); // Debug log to check the URL
+
+    console.log("Fetching URL:", '/api/manga/1');
+    fetch('/api/manga/1')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error('Fetch error:', error));
   
     fetch(url)
         .then(response => {
