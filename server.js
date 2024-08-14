@@ -41,9 +41,15 @@ app.get('/api/manga', (req, res) => {
     res.json(filteredManga);
 });
 
-// Serve the main HTML file (index.html)
-app.get('/api/manga', (req, res) => {
+// Serve the main HTML file (index.html) for the root path
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Serve manga data at /api/manga
+app.get('/api/manga', (req, res) => {
+    // Replace this with logic to send JSON data or other responses
+    res.json({ message: "Manga data would be sent here" });
 });
 
 // Start the server
