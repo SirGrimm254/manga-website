@@ -11,14 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to fetch manga by category
 function fetchMangaByCategory(category) {
-  // Construct the URL for the API request
   const url = `/api/manga?category=${encodeURIComponent(category)}`;
+  console.log(`Fetching data from: ${url}`); // Debug log to check the URL
 
   fetch(url)
       .then(response => {
           if (!response.ok) {
-              // Handle 404 and other HTTP errors
-              throw new Error(`Network response was not ok. Status: ${response.status}`);
+              // Log detailed error message
+              console.error(`Network response was not ok. Status: ${response.status}, Status Text: ${response.statusText}`);
+              throw new Error(`Network response was not ok. Status: ${response.status} ${response.statusText}`);
           }
           return response.json();
       })
@@ -71,7 +72,7 @@ function fetchMangaByCategory(category) {
           mangaList.appendChild(ul);
       })
       .catch(error => {
-          console.error('Error:', error);
+          console.error('Fetch error:', error);
           const mangaList = document.getElementById('manga-list');
           mangaList.innerHTML = `<p>An error occurred: ${error.message}</p>`;
       });
