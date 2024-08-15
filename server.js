@@ -19,7 +19,7 @@ const mangaList = [
 app.use(express.static(path.join(__dirname)));
 
 // API route to fetch manga data with optional category filtering
-app.get('/api/manga/:id', (req, res) => {
+app.get('pages/api/manga/:id', (req, res) => {
     const mangaId = req.params.id;
     const manga = mangaList.find(manga => manga.id === parseInt(mangaId));
     if (manga) {
@@ -29,14 +29,14 @@ app.get('/api/manga/:id', (req, res) => {
     }
 });
 
-app.get('/api/manga/:id', (req, res) => {
+app.get('pages/api/manga/:id', (req, res) => {
     const mangaId = req.params.id;
     // Logic to fetch manga by ID
     res.json({ id: mangaId, title: "Sample Manga" });
 });
 
 // API route to fetch all manga or filter by category
-app.get('/api/manga', (req, res) => {
+app.get('pages/api/manga', (req, res) => {
     const category = req.query.category;
     let filteredManga = mangaList;
 
@@ -48,12 +48,12 @@ app.get('/api/manga', (req, res) => {
 });
 
 // Serve the main HTML file (index.html) for the root path
-app.get('/', (req, res) => {
+app.get('/api/manga', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Serve manga data at /api/manga
-app.get('/api/manga', (req, res) => {
+app.get('pages/api/manga', (req, res) => {
     // Replace this with logic to send JSON data or other responses
     res.json({ message: "Manga data would be sent here" });
 });
