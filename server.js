@@ -6,12 +6,12 @@ const port = 3000;
 // Sample manga data
 const mangaList = [
     { id: 1, title: 'Nano Machine', category: 'Action', imageUrl: '/images/manga1.jpg', detailPage: '/manga-detail.html?id=1' },
-    { id: 2, title: 'Solo Leveling', category: 'Fantasy', imageUrl: '/images/manga2.jpg', detailPage: '/manga-detail.html?id=2' },
-    { id: 3, title: 'Demonic Emperor', category: 'Horror', imageUrl: '/images/manga3.jpg', detailPage: '/manga-detail.html?id=3' },
-    { id: 4, title: "Heavenly Demon Can't Live A Normal Life", category: 'Martial Arts', imageUrl: '/images/manga4.jpg', detailPage: '/manga-detail.html?id=4' },
-    { id: 5, title: 'Solo Leveling', category: 'Action', imageUrl: '/images/manga2.jpg', detailPage: '/manga-detail.html?id=5' },
-    { id: 6, title: 'Demonic Emperor', category: 'Action', imageUrl: '/images/manga3.jpg', detailPage: '/manga-detail.html?id=6' },
-    { id: 7, title: "Heavenly Demon Can't Live A Normal Life", category: 'Action', imageUrl: '/images/manga4.jpg', detailPage: '/manga-detail.html?id=7' },
+    { id: 2, title: 'Solo Leveling', category: 'Fantasy', imageUrl: '/images/manga2.jpg', detailPage: '/solo-detail.html?id=2' },
+    { id: 3, title: 'Demonic Emperor', category: 'Horror', imageUrl: '/images/manga3.jpg', detailPage: '/emperor-detail.html?id=3' },
+    { id: 4, title: "Heavenly Demon Can't Live A Normal Life", category: 'Martial Arts', imageUrl: '/images/manga4.jpg', detailPage: '/live-detail.html?id=4' },
+    { id: 5, title: 'Solo Leveling', category: 'Action', imageUrl: '/images/manga2.jpg', detailPage: '/solo-detail.html?id=5' },
+    { id: 6, title: 'Demonic Emperor', category: 'Action', imageUrl: '/images/manga3.jpg', detailPage: '/emperor-detail.html?id=6' },
+    { id: 7, title: "Heavenly Demon Can't Live A Normal Life", category: 'Action', imageUrl: '/images/manga4.jpg', detailPage: '/live-detail.html?id=7' },
 ];
 
 // Middleware to serve static files from the root directory (manga-website)
