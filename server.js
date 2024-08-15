@@ -12,14 +12,13 @@ const mangaList = [
     { id: 5, title: 'Solo Leveling', category: 'Action', imageUrl: '/images/manga2.jpg', detailPage: '/manga-detail.html?id=5' },
     { id: 6, title: 'Demonic Emperor', category: 'Action', imageUrl: '/images/manga3.jpg', detailPage: '/manga-detail.html?id=6' },
     { id: 7, title: "Heavenly Demon Can't Live A Normal Life", category: 'Action', imageUrl: '/images/manga4.jpg', detailPage: '/manga-detail.html?id=7' },
-    // Add more manga data as needed
 ];
 
 // Middleware to serve static files from the root directory (manga-website)
 app.use(express.static(path.join(__dirname)));
 
-// API route to fetch manga data with optional category filtering
-app.get('pages/api/manga/:id', (req, res) => {
+// API route to fetch manga by ID
+app.get('/api/manga/:id', (req, res) => {
     const mangaId = req.params.id;
     const manga = mangaList.find(manga => manga.id === parseInt(mangaId));
     if (manga) {
@@ -29,14 +28,8 @@ app.get('pages/api/manga/:id', (req, res) => {
     }
 });
 
-app.get('pages/api/manga/:id', (req, res) => {
-    const mangaId = req.params.id;
-    // Logic to fetch manga by ID
-    res.json({ id: mangaId, title: "Sample Manga" });
-});
-
 // API route to fetch all manga or filter by category
-app.get('pages/api/manga', (req, res) => {
+app.get('/api/manga', (req, res) => {
     const category = req.query.category;
     let filteredManga = mangaList;
 
@@ -48,19 +41,11 @@ app.get('pages/api/manga', (req, res) => {
 });
 
 // Serve the main HTML file (index.html) for the root path
-app.get('/api/manga', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// Serve manga data at /api/manga
-app.get('pages/api/manga', (req, res) => {
-    // Replace this with logic to send JSON data or other responses
-    res.json({ message: "Manga data would be sent here" });
 });
 
 // Start the server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-
-{}

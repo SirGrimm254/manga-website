@@ -7,24 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
             fetchMangaByCategory(category);
         });
     });
-  });
-  
-  // Function to fetch manga by category
-  function fetchMangaByCategory(category) {
+});
+
+// Function to fetch manga by category
+function fetchMangaByCategory(category) {
     const url = `/api/manga?category=${encodeURIComponent(category)}`;
     console.log(`Fetching data from: ${url}`); // Debug log to check the URL
 
-    console.log("Fetching URL:", '/api/manga/1');
-    fetch('/api/manga/1')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Network response was not ok. Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => console.log(data))
-    .catch(error => console.error('Fetch error:', error));
-  
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -37,14 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             const mangaList = document.getElementById('manga-list');
             mangaList.innerHTML = '';
-  
+
             if (!Array.isArray(data) || data.length === 0) {
                 mangaList.innerHTML = `<p>No manga found for the category "${category}".</p>`;
                 return;
             }
-  
+
             const ul = document.createElement('ul');
-  
+
             data.forEach(manga => {
                 const li = document.createElement('li');
                 li.innerHTML = `
@@ -53,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 ul.appendChild(li);
             });
-  
+
             mangaList.appendChild(ul);
         })
         .catch(error => {
@@ -61,5 +50,4 @@ document.addEventListener('DOMContentLoaded', function() {
             const mangaList = document.getElementById('manga-list');
             mangaList.innerHTML = `<p>An error occurred: ${error.message}</p>`;
         });
-  }
-  
+}
